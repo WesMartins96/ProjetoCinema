@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Cinema.Models.DetalheSessao>
+
+@{
+    ViewData["Title"] = "Ingressos";
+}
+
+<h1 style="text-align:center; color:white" >Cinema Online</h1>
+
+<p>
+    <a class="btn btn-outline-info nav-link text-white" asp-action="Create">Clique aqui para comprar o seu Ingresso</a>
+</p>
+
+<table class="table">
+    <thead>
+        
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroSala)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantidadeLugares)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CadeiraSelecionada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sessao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compra)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroSala)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeLugares)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario.HorarioSessao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filme.NomeFilme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CadeiraSelecionada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sessao.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Compra.Valor)
+            </td>
+            <td>
+                <a class="btn btn-outline-info nav-link text-white" asp-action="Edit" asp-route-id="@item.DetalheSessaoId">Editar</a> 
+                <a class="btn btn-outline-info nav-link text-white" asp-action="Details" asp-route-id="@item.DetalheSessaoId">Detalhes</a> 
+                <a class="btn btn-outline-info nav-link text-white" asp-action="Delete" asp-route-id="@item.DetalheSessaoId">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
